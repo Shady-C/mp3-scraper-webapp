@@ -1,3 +1,5 @@
+# MP3 Scraper WebApp
+
 A **web-based tool** that allows users to download multiple MP3 files from webpages that don’t offer a bulk download option. It automates **identification, selection, and downloading** of MP3 files, improving convenience and efficiency.
 
 ---
