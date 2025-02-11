@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MP3 Scraper Results</title>
+</head>
+<body>
+  <h1>Results</h1>
+  {% if not downloaded %}
+    <p>No MP3 links found, or an error occurred.</p>
+  {% else %}
+    <p>Downloaded {{ downloaded|length }} file(s):</p>
+    <ul>
+      {% for file_name in downloaded %}
+        <li>
+          <a href="{{ url_for('downloaded_file', filename=file_name) }}" target="_blank">
+            {{ file_name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <br>
+  <a href="{{ url_for('index') }}">Go back</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Ignore dependencies
+target/
+dist/
+*.egg-info/
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore downloaded MP3 files and scraped data
+scraped_data/
+downloads/
+*.mp3
+
+# Ignore configuration files
+config.json
+.env
+settings.yaml
