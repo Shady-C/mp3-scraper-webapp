@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MP3 Scraper</title>
+</head>
+<body>
+  <h1>MP3 Scraper</h1>
+  <form method="POST" action="/">
+    <label for="page_url">Enter a webpage URL containing .mp3 links:</label><br><br>
+    <input
+      type="text"
+      id="page_url"
+      name="page_url"
+      size="80"
+      placeholder="https://example.com/page-with-mp3s"
+      required
+    >
+    <br><br>
+    <button type="submit">Scrape & Download</button>
+  </form>
+</body>
+</html>
