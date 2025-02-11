@@ -1,4 +1,4 @@
-# MP3 Scraper WebApp
+# **🎵 MP3 Scraper WebApp – Enhanced Roadmap**
 
 A **web-based tool** that allows users to download multiple MP3 files from webpages that don’t offer a bulk download option. It automates **identification, selection, and downloading** of MP3 files, improving convenience and efficiency.
 
@@ -8,25 +8,26 @@ A **web-based tool** that allows users to download multiple MP3 files from webpa
 
 ### **🔹 How It Works**
 
-1. **Frontend**:
+1. **Frontend (Next.js)**
     
-    - A **simple HTML form** where users enter a webpage URL for scraping.
-    - Flask-powered backend to process user requests.
-    - (Future: CLI module if demand is high)
-2. **Backend:**
+    - Users enter a webpage URL for scraping in a **simple, responsive UI**.
+    - Displays **MP3 filenames with download options**.
+    - Uses **Axios for API requests** to the backend.
+2. **Backend (Flask API)**
     
-    - **Flask Web Server**: Manages scraping, downloads, and responses.
-    - **Web Scraper** (BeautifulSoup + Requests): Extracts MP3 links from the provided URL.
+    - **Flask Web Server**: Manages scraping, downloads, and API responses.
+    - **Web Scraper (Async Python + BeautifulSoup + Playwright)**:
+        - Extracts MP3 links from **static & JavaScript-rendered content**.
+        - Handles **hidden JSON API responses, iframes, and dynamically loaded MP3s**.
     - **Automated Batch Downloads**:
-        - All detected MP3 files are added to a queue.
-        - Files are downloaded sequentially without user confirmation.
-        - Stored in a **designated local folder**.
-3. **Basic Logging & Error Handling**:
+        - All detected MP3 files are **checked for availability before listing**.
+        - **Users can select specific MP3s** instead of downloading everything.
+3. **Basic Logging & Error Handling**
     
     - Handles **broken links, timeouts, and missing MP3s** gracefully.
-    - Logs failed downloads for debugging.
+    - Implements **retry logic** for failed requests.
 
-✅ **Outcome**: A functional web scraper with **batch MP3 downloads and a minimal UI**.
+✅ **Outcome**: A functional **asynchronous web scraper** with **batch MP3 downloads, frontend UI, and improved efficiency**.
 
 ---
 
@@ -35,21 +36,17 @@ A **web-based tool** that allows users to download multiple MP3 files from webpa
 ### **🔹 User-Controlled Download Options**
 
 - **Selectable Downloads**:
-    
-    - After scraping, users see a **list of MP3 files** with checkboxes.
+    - Users see a **list of MP3 files** with checkboxes.
     - They can **choose specific files** instead of downloading everything.
 - **Rename Before Downloading**:
-    
-    - Users can **rename** files before saving.
+    - Users can **rename files** before saving.
     - Default: Original filename from the webpage.
 - **Download Confirmation Dialog**:
-    
     - Instead of automatic downloads, a **prompt** confirms selections before saving.
 - **Bulk Download as ZIP**:
-    
-    - If multiple MP3s are found, they are **compressed into a ZIP file** for convenience.
+    - If multiple MP3s are found, they are **compressed into a ZIP file**.
 
-✅ **Outcome**: More user control and **improved usability**.
+✅ **Outcome**: More **user control, improved usability, and efficient file management**.
 
 ---
 
@@ -66,8 +63,8 @@ A **web-based tool** that allows users to download multiple MP3 files from webpa
 ### **🔹 Frontend Enhancements**
 
 - **Upgrading UI/UX**:
-    - Use **Next.js, Vue.js, or React** for a **dynamic, responsive frontend**.
-    - Improved aesthetics with **Bootstrap/TailwindCSS**.
+    - Uses **Next.js (App Router)** for a **dynamic, responsive frontend**.
+    - Styled with **Tailwind CSS for a modern look**.
 
 ✅ **Outcome**: Users can **save, manage, and retrieve MP3 files**, making the tool more practical.
 
@@ -97,20 +94,64 @@ A **web-based tool** that allows users to download multiple MP3 files from webpa
 
 ## **💡 Future Innovations**
 
-4. **🎵 YouTube & Streaming Support**
-    
-    - **YouTube MP3 Scraping** via `yt-dlp`.
-    - **Support for podcast feeds (RSS parsing)**.
-    - **SoundCloud & Bandcamp scraping** (if allowed).
-5. **📜 Advanced Filtering & Metadata**
-    
-    - **Display MP3 file size & duration before downloading**.
-    - **Filter files by bitrate, name, or length**.
-6. **⚡ Monetization Options**
-    
-    - **Premium Version** for faster speeds & cloud storage.
-    - **Affiliate links** to legal MP3 sources.
-    - **Ad placement** for revenue.
+### **🎵 YouTube & Streaming Support**
+
+- **YouTube MP3 Scraping** via `yt-dlp`.
+- **Support for podcast feeds (RSS parsing)**.
+- **SoundCloud & Bandcamp scraping** (if allowed).
+
+### **📜 Advanced Filtering & Metadata**
+
+- **Display MP3 file size & duration before downloading**.
+- **Filter files by bitrate, name, or length**.
+
+### **⚡ Monetization Options**
+
+- **Premium Version** for faster speeds & cloud storage.
+- **Affiliate links** to legal MP3 sources.
+- **Ad placement** for revenue.
+
+---
+
+## **💼 Deployment & Cloud Infrastructure**
+
+### **🔹 Backend Deployment (Flask)**
+
+- Deploy Flask API on **Render or Railway**.
+- Host MP3 storage on **AWS S3 or Cloudflare R2**.
+
+### **🔹 Frontend Deployment (Next.js)**
+
+- Deploy **Next.js frontend on Vercel**.
+- Uses `.env.local` for **dynamic API URLs**.
+
+### **🔹 Hosting & Storage Considerations**
+
+- **Cloud Storage** for MP3s: AWS S3 / Cloudflare R2 / Firebase Storage.
+- **Database Support** for storing user preferences: PostgreSQL / Firebase Firestore.
+
+✅ **Outcome**: A scalable, cloud-hosted **MP3 scraping platform** with efficient storage.
+
+---
+
+## **📌 Technical Improvements & Fixes**
+
+### **🔹 Backend (Flask)**
+
+✅ **Converted API to support async scraping** (`asyncio`, `aiohttp`).  
+✅ **Implemented caching for failed URLs** (avoids unnecessary retries).  
+✅ **Fixed async errors** (`RuntimeError: Install Flask with 'async' extra`).  
+✅ **Auto-delete temporary files after 5 minutes**.  
+✅ **Dynamically generate correct file URLs** for both local & deployed environments.
+
+### **🔹 Frontend (Next.js)**
+
+✅ **Refactored from React to Next.js (App Router)**.  
+✅ **Implemented Tailwind CSS for better UI/UX**.  
+✅ **Fixed Next.js `module.exports` error** in `next.config.mjs`.  
+✅ **Improved error handling & API response display**.
+
+✅ **Outcome**: Faster, more robust, and **easier-to-maintain codebase**.
 
 ---
 
@@ -118,12 +159,47 @@ A **web-based tool** that allows users to download multiple MP3 files from webpa
 
 - Open to **feedback, feature requests, and contributors**.
 - Looking for **developers, UI designers, and testers**.
-- **CI/CD pipeline integration** planned for smoother updates.
+- **CI/CD pipeline integration planned** for smoother updates.
 
 ---
 
-### **📌 Next Steps**
+## **📌 Next Steps**
 
-✅ Build **Version 1** (MVP) with basic scraping & downloads.  
-✅ Expand to **Version 2** with user-controlled selections.  
-🚀 Work towards **Version 3 & 4** with storage, automation, and UI/UX enhancements.
+✅ **Finalize Backend Deployment (Render/Railway).**  
+✅ **Deploy Frontend on Vercel.**  
+✅ **Expand to Version 2 with user-controlled selections.**  
+🚀 **Continue towards Version 3 & 4 with storage, automation, and UI/UX enhancements.**
+
+---
+
+### **🚀 Get Started**
+
+To run the project locally:
+
+```sh
+# 1. Clone the repository
+git clone https://github.com/your-repo/mp3-scraper-webapp.git
+
+# 2. Backend: Install dependencies & run Flask API
+cd backend
+pip install -r requirements.txt
+python app.py
+
+# 3. Frontend: Install dependencies & run Next.js app
+cd frontend
+npm install
+npm run dev
+```
+
+📌 **Visit**: `http://localhost:3000` and start scraping MP3s!
+
+---
+
+### **📞 Need Help?**
+
+Open an **issue**, send a **pull request**, or reach out in the **discussion section**.
+
+---
+
+✅ **Project is live & improving!** 🚀  
+Let me know if you need further updates or refinements. 🚀🎵
